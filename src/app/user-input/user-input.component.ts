@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { InvestmentResultService } from '../investment-result/investment-result.service';
 
 @Component({
   selector: 'app-user-input',
@@ -9,6 +10,19 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-input.component.css',
 })
 export class UserInputComponent {
-  protected onSubmit() {}
-  protected onClick() {}
+  protected initialInvestment = signal(0);
+  protected annualInvestment = signal(0);
+  protected expectedReturn = signal(5);
+  protected duration = signal(10);
+
+  private investmentResultService = inject(InvestmentResultService);
+
+  protected onSubmit() {
+    this.investmentResultService.addInvestmentData({
+      initialInvestment: this.initialInvestment(),
+      annualInvestment: this.annualInvestment(),
+      expectedReturn: this.expectedReturn(),
+      duration: this.duration(),
+    });
+  }
 }

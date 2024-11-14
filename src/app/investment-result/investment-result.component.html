@@ -1,4 +1,4 @@
-@if (investmentResults.length > 0) {
+@if (investmentResults().length > 0) {
 <table>
   <thead>
     <tr>
@@ -10,13 +10,13 @@
     </tr>
   </thead>
   <tbody>
-    @for (result of investmentResults; track result.year) {
+    @for (result of investmentResults(); track result.year) {
     <tr>
       <td>{{ result.year }}</td>
-      <td>{{ result.value }}</td>
-      <td>{{ result.interest }}</td>
-      <td>{{ result.total_interest }}</td>
-      <td>{{ result.capital }}</td>
+      <td>{{ result.valueEndOfYear | currency }}</td>
+      <td>{{ result.interest | currency }}</td>
+      <td>{{ result.totalInterest | currency }}</td>
+      <td>{{ result.totalAmountInvested | currency }}</td>
     </tr>
     }
   </tbody>

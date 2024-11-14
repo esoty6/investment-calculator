@@ -1,7 +1,15 @@
-export type Investment = {
+export type InvestmentResult = {
   year: number;
-  value: string;
-  interest: string;
-  total_interest: string;
-  capital: string;
+  interest: number;
+  valueEndOfYear: number;
+  annualInvestment: number;
+  totalInterest: number;
+  totalAmountInvested: number;
+};
+
+export type Investment = {
+  initialInvestment: number;
+  annualInvestment: number;
+  duration: number;
+  expectedReturn: number;
 };
