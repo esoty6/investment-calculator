@@ -3,7 +3,7 @@ import { type Investment, type InvestmentResult } from './investment.model';
 
 @Injectable({ providedIn: 'root' })
 export class InvestmentResultService {
-  readonly investmentResult = signal<InvestmentResult[]>([]);
+  readonly investmentResult = signal<InvestmentResult[] | undefined>(undefined);
 
   addInvestmentData(investment: Investment) {
     const calculatedData = this.calculateInvestmentResults(investment);
