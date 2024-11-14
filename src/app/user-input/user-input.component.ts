@@ -19,10 +19,15 @@ export class UserInputComponent {
 
   protected onSubmit() {
     this.investmentResultService.addInvestmentData({
-      initialInvestment: this.initialInvestment(),
-      annualInvestment: this.annualInvestment(),
-      expectedReturn: this.expectedReturn(),
-      duration: this.duration(),
+      initialInvestment: +this.initialInvestment(),
+      annualInvestment: +this.annualInvestment(),
+      expectedReturn: +this.expectedReturn(),
+      duration: +this.duration(),
     });
+
+    this.initialInvestment.set(0);
+    this.annualInvestment.set(0);
+    this.expectedReturn.set(5);
+    this.duration.set(10);
   }
 }
